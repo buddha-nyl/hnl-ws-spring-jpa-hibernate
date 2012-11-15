@@ -1,4 +1,4 @@
-Sample Web Service with Spring3.1, Apache CXF, JPA, Hibernate4.1
+Sample Web Service and RESTful sample with Spring3.1, Apache CXF, JPA, Hibernate4.1
 ----------------------------------------
 1.  Install Maven and Java
 2.  On the Root Directory run  "mvn clean install"
@@ -7,4 +7,6 @@ Sample Web Service with Spring3.1, Apache CXF, JPA, Hibernate4.1
 
 http://localhost:8080/hnl-ws-spring-jpa-hibernate/
 
-You should see a table view of the web services.  Click on the link and it should bring up the running wsdl.
+You should see a table view of the web services as well as RestFul Service.  
+Click on the link and it should bring up the running services.  
+For the RESTful time servie it will print out current time.
