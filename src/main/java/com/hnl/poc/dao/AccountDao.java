@@ -12,9 +12,9 @@ import com.hnl.poc.entity.Account;
  *
  */
 public interface AccountDao {
-	public void saveAccount(Account account);
+	public Long saveAccount(Account account);
 	public void updateAccount(Account account);
-	public Account retreiveAccountById(String AccountID);
+	public Account retreiveAccountById(Long AccountID);
 	public List<Account> retrieveAccounts(String lastname);
 	public void deleteAccount(Account account);
 }

@@ -18,7 +18,7 @@ import com.hnl.poc.dao.AccountDao;
 import com.hnl.poc.entity.Account;
 
 @RunWith(SpringJUnit4ClassRunner.class)
-@ContextConfiguration( locations="/spring/service-beans.xml")
+@ContextConfiguration( locations="/spring/test-service-beans.xml")
 public class DAOEntityManagerTest {
 	final Logger logger = Logger.getLogger(this.getClass());
 	@Autowired
@@ -34,12 +34,23 @@ public class DAOEntityManagerTest {
 
 	@Test
 	public void testDAO() {
-		accountDao.saveAccount(new Account("Mary", "Jane", new Date()));
-		accountDao.saveAccount(new Account("Jay", "Jane", new Date()));
-		accountDao.saveAccount(new Account("Bob", "Dylan", new Date()));
+		logger.debug("******Inside testDAO******");
+		Long maryId = accountDao.saveAccount(new Account("Mary", "Jane", new Date()));
+		Long jayId = accountDao.saveAccount(new Account("Jay", "Jane", new Date()));
+		Long janeId = accountDao.saveAccount(new Account("Bob", "Dylan", new Date()));
+		
+		//get accounts
+		logger.debug("*****&^%***First Account ("+maryId+") ******");
+		Account maccount = accountDao.retreiveAccountById(maryId);
+		if(maccount != null) {
+			logger.debug("*****GOT THE First Account ("+maryId+") = " + maccount.toString() +"*******");
+		}
+		
+		//retrieve all accounts
 		List<Account> accountList = accountDao.retrieveAccounts("Jane");
 		assertNotNull("Account List is null.", accountList);
 		
+		logger.debug("****before loop: size of accountList "+ accountList.size() +"***");
 		for(Account account : accountList){
 			logger.debug("****DAO Accessing Account: " + account.toString());
 		}

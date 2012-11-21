@@ -8,7 +8,7 @@
 <web-app>
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
-		<param-value>WEB-INF/spring-beans.xml</param-value>
+		<param-value>classpath*:/META-INF/*-beans.xml</param-value>
 	</context-param>
 
 	<listener>

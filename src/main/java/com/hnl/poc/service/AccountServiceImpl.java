@@ -11,12 +11,21 @@ import com.hnl.poc.dao.AccountDao;
 import com.hnl.poc.entity.Account;
 
 public class AccountServiceImpl implements AccountService {
+	
 	private Logger logger = Logger.getLogger(this.getClass());
 	
 	@Autowired
-	public AccountDao accountDao;
+	private AccountDao accountDao;
 
-	public Account retrieveAccountById(String accountID) {
+	public AccountDao getAccountDao() {
+		return accountDao;
+	}
+
+	public void setAccountDao(AccountDao accountDao) {
+		this.accountDao = accountDao;
+	}
+
+	public Account retrieveAccountById(Long accountID) {
 		if(logger.isDebugEnabled()){
 			logger.debug("retrieveAccountById:" + accountID);
 		}
@@ -25,11 +34,13 @@ public class AccountServiceImpl implements AccountService {
 	}
 	
 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor=Exception.class)
-	public void saveAccount(Account account) {
+	public Long saveAccount(Account account) {
 		if(logger.isDebugEnabled()){
 			logger.debug("savingAccount:" + account.toString());
+			logger.debug("**accountDao = " + accountDao);
 		}
 		accountDao.saveAccount(account);
+		return account.getId();
 	}
 	
 	@Transactional(propagation = Propagation.REQUIRED, rollbackFor=Exception.class)

@@ -64,6 +64,7 @@ public class Account implements Serializable{
 	/**
 	 * @return the firstname
 	 */
+	@Column(name="FIRST_NAME")
 	public String getFirstname() {
 		return firstname;
 	}

@@ -17,20 +17,20 @@ import org.springframework.orm.jpa.support.JpaDaoSupport;
  */
 public abstract class AbstractJpaDAO< T extends Serializable >  {
 	   
-	   private Class< T > clazz;
+	   private Class< T > entityClass;
 	   
 	   @PersistenceContext
 	   EntityManager entityManager;
 	   
 	   public void setClazz( final Class< T > clazzToSet ){
-	      this.clazz = clazzToSet;
+	      this.entityClass = clazzToSet;
 	   }
 	   
 	   public T findOne( final Long id ){
-	      return this.entityManager.find( this.clazz, id );
+	      return this.entityManager.find( this.entityClass, id );
 	   }
 	   public List< T > findAll(){
-	      return this.entityManager.createQuery( "from " + this.clazz.getName() )
+	      return this.entityManager.createQuery( "from " + this.entityClass.getName() )
 	       .getResultList();
 	   }
 	   
