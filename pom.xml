@@ -12,6 +12,7 @@
 		<sl4j.version>1.5.6</sl4j.version>
 		<java.version>1.6</java.version>
 		<junit.version>4.8.2</junit.version>
+		<env>dev</env>
 	</properties>
 	
 	<dependencies>
@@ -257,7 +258,28 @@
 	</repositories>
 
 	<build>
+		<!-- Filters -->
+		<filters>
+			<filter>filters/filter-${env}.properties</filter>
+		</filters>
+		
 		<finalName>${project.artifactId}</finalName>
+		
+		<!-- resource to populate the configuration from filters into the app -begin-->
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<filtering>false</filtering>
+			</resource>
+			<resource>
+				<filtering>true</filtering>
+				<directory>src/main/resources</directory>
+				<includes>
+					<include>**/*.properties</include>
+				</includes>
+			</resource>
+		</resources>
+		<!-- resource to populate the configuration from filters into the app - end-->
 		<plugins>
 
 			<!-- Facilitates downloading source and javadoc in Eclipse -->
