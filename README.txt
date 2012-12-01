@@ -11,4 +11,4 @@ You should see a table view of the web services as well as RestFul Service.
 Click on the link and it should bring up the running services.  
 For the RESTful time servie it will print out current time.
 
-Note: The default database is in memory DB using HSQL.  To switch your datasource please see service-beans.xml 
+Note: The default database is in memory DB using HSQL.  To switch your datasource please see filters/fiters-dev.properties
