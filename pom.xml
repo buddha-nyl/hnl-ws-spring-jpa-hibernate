@@ -258,13 +258,12 @@
 	</repositories>
 
 	<build>
+		<finalName>${project.artifactId}</finalName>
+		
 		<!-- Filters -->
 		<filters>
 			<filter>filters/filter-${env}.properties</filter>
 		</filters>
-		
-		<finalName>${project.artifactId}</finalName>
-		
 		<!-- resource to populate the configuration from filters into the app -begin-->
 		<resources>
 			<resource>
